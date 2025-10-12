@@ -16,17 +16,30 @@
       <button class="tab-btn" data-tab="anvil">Anvil Mode</button>
       <button class="tab-btn" data-tab="forge">Forge Mode</button>
       <button class="tab-btn" data-tab="cast">Cast Mode</button>
-      <button class="tab-btn" data-tab="keybindings">Keybindings</button>
     </div>
 
     <div id="content">
       <div id="anvil" class="tab-content active">
         <h2>Anvil Mode</h2>
-        <div class="button-group">
-          <button onclick="startAnvil()">Start Local Node</button>
-          <button onclick="stopAnvil()">Stop Node</button>
+        <div class="content-wrapper">
+          <div class="input-section">
+            <div class="input-group">
+              <input type="text" id="rpc" placeholder="RPC URL (default: http://127.0.0.1:8545)" />
+              <input type="text" id="key" placeholder="Private Key" />
+              <input type="text" id="chain" placeholder="Chain ID (default: 31337)" />
+              <input type="text" id="gasfee" placeholder="Gas Fee (default: 1000000000)" />
+              <input type="text" id="gaslimit" placeholder="Gas Limit (default: 30000000)" />
+              <input type="text" id="forkurl" placeholder="Fork URL (optional)" />
+            </div>
+            <div class="button-group">
+              <button onclick="startAnvil()">Start Local Node</button>
+              <button onclick="stopAnvil()">Stop Node</button>
+            </div>
+          </div>
+          <div class="output-section">
+            <div class="output" id="anvilOutput"></div>
+          </div>
         </div>
-        <div class="output" id="anvilOutput"></div>
       </div>
 
       <div id="forge" class="tab-content">
@@ -47,18 +60,6 @@
           <button onclick="callCast()">Call Function</button>
         </div>
         <div class="output" id="castOutput"></div>
-      </div>
-
-      <div id="keybindings" class="tab-content">
-        <h2>Environment Keybindings</h2>
-        <input type="text" id="rpc" placeholder="RPC URL (e.g., http://localhost:8545)" />
-        <input type="text" id="key" placeholder="Private Key" />
-        <input type="text" id="chain" placeholder="Chain ID (e.g., 1 for Mainnet)" />
-        <div class="button-group">
-          <button onclick="savePreset()">Save</button>
-          <button onclick="loadPreset()">Load</button>
-        </div>
-        <div class="output" id="presetOutput"></div>
       </div>
     </div>
   </div>
