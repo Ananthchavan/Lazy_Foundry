@@ -56,6 +56,12 @@ function startAnvil() {
     return;
   }
   
+  const rpcUrl = document.getElementById('rpc').value || 'http://127.0.0.1:8545';
+  const chainId = document.getElementById('chain').value || '31337';
+  const gasFee = document.getElementById('gasfee').value || '1000000000';
+  const gasLimit = document.getElementById('gaslimit').value || '30000000';
+  const forkUrl = document.getElementById('forkurl').value;
+  
   setButtonProcessing(btn, true);
   const loadingLine = addOutput('anvilOutput', 'Starting Anvil local node...', 'info', true);
   
@@ -64,9 +70,17 @@ function startAnvil() {
     anvilRunning = true;
     addOutput('anvilOutput', '✓ Anvil started successfully', 'success');
     
-    setTimeout(() => addOutput('anvilOutput', 'RPC: http://127.0.0.1:8545', 'info'), 200);
-    setTimeout(() => addOutput('anvilOutput', 'Chain ID: 31337', 'info'), 400);
-    setTimeout(() => addOutput('anvilOutput', 'Available Accounts: 10', 'info'), 600);
+    setTimeout(() => addOutput('anvilOutput', `RPC: ${rpcUrl}`, 'info'), 200);
+    setTimeout(() => addOutput('anvilOutput', `Chain ID: ${chainId}`, 'info'), 400);
+    setTimeout(() => addOutput('anvilOutput', `Gas Fee: ${gasFee}`, 'info'), 600);
+    setTimeout(() => addOutput('anvilOutput', `Gas Limit: ${gasLimit}`, 'info'), 800);
+    
+    if (forkUrl) {
+      setTimeout(() => addOutput('anvilOutput', `Fork URL: ${forkUrl}`, 'info'), 1000);
+      setTimeout(() => addOutput('anvilOutput', 'Available Accounts: 10', 'info'), 1200);
+    } else {
+      setTimeout(() => addOutput('anvilOutput', 'Available Accounts: 10', 'info'), 1000);
+    }
     
     setButtonProcessing(btn, false);
   }, 1500);
@@ -206,25 +220,25 @@ function savePreset() {
   const chain = document.getElementById('chain').value;
   
   if (!rpc || !key || !chain) {
-    addOutput('presetOutput', 'Please fill all fields!', 'error');
+    addOutput('anvilOutput', 'Please fill all fields!', 'error');
     return;
   }
   
   setButtonProcessing(btn, true);
-  const loadingLine = addOutput('presetOutput', 'Saving preset...', 'info', true);
+  const loadingLine = addOutput('anvilOutput', 'Saving configuration...', 'info', true);
   
   setTimeout(() => {
     loadingLine.remove();
     presets.current = { rpc, key, chain };
-    addOutput('presetOutput', '✓ Preset saved successfully', 'success');
+    addOutput('anvilOutput', '✓ Configuration saved successfully', 'success');
   }, 800);
   
   setTimeout(() => {
-    addOutput('presetOutput', `RPC: ${rpc}`, 'info');
+    addOutput('anvilOutput', `RPC: ${rpc}`, 'info');
   }, 1100);
   
   setTimeout(() => {
-    addOutput('presetOutput', `Chain ID: ${chain}`, 'info');
+    addOutput('anvilOutput', `Chain ID: ${chain}`, 'info');
     setButtonProcessing(btn, false);
   }, 1400);
 }
@@ -233,12 +247,12 @@ function loadPreset() {
   const btn = event.target;
   
   if (!presets.current) {
-    addOutput('presetOutput', 'No preset saved!', 'error');
+    addOutput('anvilOutput', 'No configuration saved!', 'error');
     return;
   }
   
   setButtonProcessing(btn, true);
-  const loadingLine = addOutput('presetOutput', 'Loading preset...', 'info', true);
+  const loadingLine = addOutput('anvilOutput', 'Loading configuration...', 'info', true);
   
   setTimeout(() => {
     loadingLine.remove();
@@ -246,15 +260,15 @@ function loadPreset() {
     document.getElementById('key').value = presets.current.key;
     document.getElementById('chain').value = presets.current.chain;
     
-    addOutput('presetOutput', '✓ Preset loaded successfully', 'success');
+    addOutput('anvilOutput', '✓ Configuration loaded successfully', 'success');
   }, 800);
   
   setTimeout(() => {
-    addOutput('presetOutput', `RPC: ${presets.current.rpc}`, 'info');
+    addOutput('anvilOutput', `RPC: ${presets.current.rpc}`, 'info');
   }, 1100);
   
   setTimeout(() => {
-    addOutput('presetOutput', `Chain ID: ${presets.current.chain}`, 'info');
+    addOutput('anvilOutput', `Chain ID: ${presets.current.chain}`, 'info');
     setButtonProcessing(btn, false);
   }, 1400);
 }
