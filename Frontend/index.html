@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lazy Foundry Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,49 +13,57 @@
     <p class="subtitle">A workflow tool for Foundry</p>
 
     <div class="menu">
-      <button class="tab-btn" data-tab="anvil">🏗️ Anvil Mode</button>
-      <button class="tab-btn" data-tab="forge">⚒️ Forge Mode</button>
-      <button class="tab-btn" data-tab="cast">🪄 Cast Mode</button>
-      <button class="tab-btn" data-tab="presets">⚙️ Presets</button>
+      <button class="tab-btn" data-tab="anvil">Anvil Mode</button>
+      <button class="tab-btn" data-tab="forge">Forge Mode</button>
+      <button class="tab-btn" data-tab="cast">Cast Mode</button>
+      <button class="tab-btn" data-tab="presets">Keybindings</button>
     </div>
 
     <div id="content">
       <div id="anvil" class="tab-content active">
         <h2>Anvil Mode</h2>
-        <button onclick="startAnvil()">Start Local Node</button>
-        <button onclick="stopAnvil()">Stop Node</button>
+        <div class="button-group">
+          <button onclick="startAnvil()">Start Local Node</button>
+          <button onclick="stopAnvil()">Stop Node</button>
+        </div>
         <div class="output" id="anvilOutput"></div>
       </div>
 
       <div id="forge" class="tab-content">
         <h2>Forge Mode</h2>
-        <button onclick="buildForge()">Build</button>
-        <button onclick="testForge()">Test</button>
-        <button onclick="deployForge()">Deploy</button>
+        <div class=""button-group">
+          <button onclick="buildForge()">Build</button>
+          <button onclick="testForge()">Test</button>
+          <button onclick="deployForge()">Deploy</button>
+        </div>
         <div class="output" id="forgeOutput"></div>
       </div>
 
       <div id="cast" class="tab-content">
         <h2>Cast Mode</h2>
-        <input type="text" id="castFunc" placeholder="Function name" />
-        <input type="text" id="castArgs" placeholder="Arguments" />
-        <button onclick="callCast()">Call</button>
+        <input type="text" id="castFunc" placeholder="Function name (e.g., balanceOf)" />
+        <input type="text" id="castArgs" placeholder="Arguments (comma-seperated)" />
+        <div class="button-group">
+          <button onclick="callCast()">Call</button>
+        </div>
         <div class="output" id="castOutput"></div>
       </div>
 
-      <div id="presets" class="tab-content">
+      <div id="keybindings" class="tab-content">
         <h2>Environment Presets</h2>
-        <input type="text" id="rpc" placeholder="RPC URL" />
+        <input type="text" id="rpc" placeholder="RPC URL (e.g., https://asr:9978)" />
         <input type="text" id="key" placeholder="Private Key" />
-        <input type="text" id="chain" placeholder="Chain ID" />
-        <button onclick="savePreset()">Save</button>
-        <button onclick="loadPreset()">Load</button>
+        <input type="text" id="chain" placeholder="Chain ID(e.g., 1 for Mainnet)" />
+        <div class=""button-group">
+          <button onclick="savePreset()">Save</button>
+          <button onclick="loadPreset()">Load</button>
+        </div>
         <div class="output" id="presetOutput"></div>
       </div>
     </div>
   </div>
 
-
+<script src=""script.js"></script>
 </body>
 </html>
 
