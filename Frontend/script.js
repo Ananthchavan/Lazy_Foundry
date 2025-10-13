@@ -155,25 +155,112 @@ function testForge() {
   }, 2200);
 }
 
-function deployForge() {
+function coverageForge() {
   const btn = event.target;
   setButtonProcessing(btn, true);
   
-  const loadingLine = addOutput('forgeOutput', 'Deploying contract...', 'info', true);
+  const loadingLine = addOutput('forgeOutput', 'Generating coverage report...', 'info', true);
   
   setTimeout(() => {
     loadingLine.remove();
-    const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
-    addOutput('forgeOutput', '✓ Contract deployed!', 'success');
+    addOutput('forgeOutput', '✓ Analyzing test coverage...', 'success');
+  }, 1000);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ Coverage: 94.5%', 'success');
+  }, 1500);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', 'Lines covered: 189/200', 'info');
+  }, 1800);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ Coverage report generated', 'success');
+    setButtonProcessing(btn, false);
+  }, 2200);
+}
+
+function createForge() {
+  const btn = event.target;
+  setButtonProcessing(btn, true);
+  
+  const loadingLine = addOutput('forgeOutput', 'Creating new contract...', 'info', true);
+  
+  setTimeout(() => {
+    loadingLine.remove();
+    addOutput('forgeOutput', '✓ Contract template created', 'success');
+  }, 1000);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', 'File: src/Contract.sol', 'info');
+  }, 1300);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ Test file created: test/Contract.t.sol', 'success');
+    setButtonProcessing(btn, false);
+  }, 1600);
+}
+
+function initForge() {
+  const btn = event.target;
+  setButtonProcessing(btn, true);
+  
+  const loadingLine = addOutput('forgeOutput', 'Initializing Forge project...', 'info', true);
+  
+  setTimeout(() => {
+    loadingLine.remove();
+    addOutput('forgeOutput', '✓ Creating project structure...', 'success');
+  }, 800);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ foundry.toml created', 'success');
   }, 1200);
   
   setTimeout(() => {
-    const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
-    addOutput('forgeOutput', `Address: ${mockAddress}`, 'info');
-  }, 1600);
+    addOutput('forgeOutput', '✓ Project initialized successfully', 'success');
+    setButtonProcessing(btn, false);
+  }, 1800);
+}
+
+function installForge() {
+  const btn = event.target;
+  setButtonProcessing(btn, true);
+  
+  const loadingLine = addOutput('forgeOutput', 'Installing dependencies...', 'info', true);
   
   setTimeout(() => {
-    addOutput('forgeOutput', 'Transaction hash: 0x' + Math.random().toString(16).substr(2, 64), 'info');
+    loadingLine.remove();
+    addOutput('forgeOutput', '✓ Fetching dependencies...', 'success');
+  }, 1000);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ Installing forge-std...', 'success');
+  }, 1500);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ Dependencies installed', 'success');
+    setButtonProcessing(btn, false);
+  }, 2000);
+}
+
+function scriptForge() {
+  const btn = event.target;
+  setButtonProcessing(btn, true);
+  
+  const loadingLine = addOutput('forgeOutput', 'Running deployment script...', 'info', true);
+  
+  setTimeout(() => {
+    loadingLine.remove();
+    addOutput('forgeOutput', '✓ Executing script...', 'success');
+  }, 1000);
+  
+  setTimeout(() => {
+    const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
+    addOutput('forgeOutput', `Contract deployed at: ${mockAddress}`, 'info');
+  }, 1500);
+  
+  setTimeout(() => {
+    addOutput('forgeOutput', '✓ Script execution completed', 'success');
     setButtonProcessing(btn, false);
   }, 2000);
 }
