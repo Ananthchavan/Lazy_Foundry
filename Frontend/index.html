@@ -25,7 +25,7 @@
           <div class="input-section">
             <div class="input-group">
               <input type="text" id="rpc" placeholder="RPC URL (default: http://127.0.0.1:8545)" />
-              <input type="text" id="key" placeholder="Private Key" />
+              <input type="text" id="key" placeholder="Private Key (optional)" />
               <input type="text" id="chain" placeholder="Chain ID (default: 31337)" />
               <input type="text" id="gasfee" placeholder="Gas Fee (default: 1000000000)" />
               <input type="text" id="gaslimit" placeholder="Gas Limit (default: 30000000)" />
@@ -34,6 +34,10 @@
             <div class="button-group">
               <button onclick="startAnvil()">Start Local Node</button>
               <button onclick="stopAnvil()">Stop Node</button>
+            </div>
+            <div class="button-group">
+              <button onclick="savePreset()">Save Preset</button>
+              <button onclick="loadPreset()">Load Preset</button>
             </div>
           </div>
           <div class="output-section">
